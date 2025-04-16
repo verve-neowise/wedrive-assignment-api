@@ -1,4 +1,4 @@
-@baseUrl = http://localhost:3000
+@baseUrl = https://wedrive-assignment-api.onrender.com
 @phoneNumber = +998901234567
 
 ### Создание нового пользователя
