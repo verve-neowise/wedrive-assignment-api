@@ -17,7 +17,7 @@ git clone https://github.com/your-username/wedrive-assignment-api.git
 cd wedrive-assignment-api
 ```
 
-2. Установите зависимости:
+2. Установите зависимости (Prisma клиент будет сгенерирован автоматически):
 ```bash
 npm install
 ```
