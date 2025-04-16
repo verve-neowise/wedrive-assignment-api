@@ -1,0 +1,76 @@
+@baseUrl = http://localhost:3000
+@phoneNumber = +998901234567
+
+### Создание нового пользователя
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+    "phone": "{{phoneNumber}}"
+}
+
+### Ошибка: Создание пользователя с существующим номером телефона
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+    "phone": "{{phoneNumber}}"
+}
+
+### Получение информации о кошельке
+GET {{baseUrl}}/wallet
+X-Account-Phone: {{phoneNumber}}
+
+### Получение списка карт
+GET {{baseUrl}}/cards
+X-Account-Phone: {{phoneNumber}}
+
+### Добавление новой карты
+POST {{baseUrl}}/cards
+X-Account-Phone: {{phoneNumber}}
+Content-Type: application/json
+
+{
+    "number": "8600123456789012",
+    "expire_date": "12/25"
+}
+
+### Активация промокода
+POST {{baseUrl}}/promocode
+X-Account-Phone: {{phoneNumber}}
+Content-Type: application/json
+
+{
+    "code": "WELCOME2024"
+}
+
+### Обновление метода оплаты на "cash"
+PUT {{baseUrl}}/wallet/method
+X-Account-Phone: {{phoneNumber}}
+Content-Type: application/json
+
+{
+    "active_method": "cash"
+}
+
+### Обновление метода оплаты на "card"
+PUT {{baseUrl}}/wallet/method
+X-Account-Phone: {{phoneNumber}}
+Content-Type: application/json
+
+{
+    "active_method": "card",
+    "active_card_id": 1
+}
+
+### Ошибка: Обновление метода оплаты на "card" без active_card_id
+PUT {{baseUrl}}/wallet/method
+X-Account-Phone: {{phoneNumber}}
+Content-Type: application/json
+
+{
+    "active_method": "card"
+}
+
+### Ошибка: Запрос без X-Account-Phone
+GET {{baseUrl}}/wallet 
